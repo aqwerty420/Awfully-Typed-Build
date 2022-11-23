@@ -974,8 +974,7 @@ do
         if not rawget(metatable, "_descriptors") then
             metatable._descriptors = {}
         end
-        local descriptor = __TS__CloneDescriptor(desc)
-        metatable._descriptors[key] = descriptor
+        metatable._descriptors[key] = __TS__CloneDescriptor(desc)
         metatable.__index = descriptorIndex
         metatable.__newindex = descriptorNewIndex
     end
@@ -1611,22 +1610,6 @@ local function __TS__ParseFloat(numberString)
     return ____number_1
 end
 
-local function __TS__StringSubstr(self, from, length)
-    if from ~= from then
-        from = 0
-    end
-    if length ~= nil then
-        if length ~= length or length <= 0 then
-            return ""
-        end
-        length = length + from
-    end
-    if from >= 0 then
-        from = from + 1
-    end
-    return string.sub(self, from, length)
-end
-
 local function __TS__StringSubstring(self, start, ____end)
     if ____end ~= ____end then
         ____end = 0
@@ -1656,9 +1639,9 @@ do
                 base = 16
                 local ____TS__Match_result__0_0
                 if __TS__Match(hexMatch, "-") then
-                    ____TS__Match_result__0_0 = "-" .. __TS__StringSubstr(numberString, #hexMatch)
+                    ____TS__Match_result__0_0 = "-" .. __TS__StringSubstring(numberString, #hexMatch)
                 else
-                    ____TS__Match_result__0_0 = __TS__StringSubstr(numberString, #hexMatch)
+                    ____TS__Match_result__0_0 = __TS__StringSubstring(numberString, #hexMatch)
                 end
                 numberString = ____TS__Match_result__0_0
             end
@@ -1670,7 +1653,7 @@ do
         if base <= 10 then
             ____temp_1 = __TS__StringSubstring(parseIntBasePattern, 0, base)
         else
-            ____temp_1 = __TS__StringSubstr(parseIntBasePattern, 0, 10 + 2 * (base - 10))
+            ____temp_1 = __TS__StringSubstring(parseIntBasePattern, 0, 10 + 2 * (base - 10))
         end
         local allowedDigits = ____temp_1
         local pattern = ("^%s*(-?[" .. allowedDigits) .. "]*)"
@@ -2378,6 +2361,22 @@ local function __TS__StringStartsWith(self, searchString, position)
         position = 0
     end
     return string.sub(self, position + 1, #searchString + position) == searchString
+end
+
+local function __TS__StringSubstr(self, from, length)
+    if from ~= from then
+        from = 0
+    end
+    if length ~= nil then
+        if length ~= length or length <= 0 then
+            return ""
+        end
+        length = length + from
+    end
+    if from >= 0 then
+        from = from + 1
+    end
+    return string.sub(self, from, length)
 end
 
 local function __TS__StringTrim(self)
