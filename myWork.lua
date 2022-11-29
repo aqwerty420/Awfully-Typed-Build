@@ -17,7 +17,7 @@ myWork.warrior.fury:Init(function()
     if not awful.target.exists or awful.target.dead or awful.target.ally then
         return
     end
-    StartAttack()
+    awful.call("StartAttack")
     spells.Recklessness()
     spells.Rampage()
     spells.Execute()
