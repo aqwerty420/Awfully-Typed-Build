@@ -1386,10 +1386,6 @@ local function __TS__MathSign(val)
     return 0
 end
 
-local function __TS__Modulo50(a, b)
-    return a - math.floor(a / b) * b
-end
-
 local function __TS__Number(value)
     local valueType = type(value)
     if valueType == "number" then
@@ -2478,7 +2474,6 @@ local ____exports = {
   __TS__MathAtan2 = __TS__MathAtan2,
   __TS__MathModf = __TS__MathModf,
   __TS__MathSign = __TS__MathSign,
-  __TS__Modulo50 = __TS__Modulo50,
   __TS__New = __TS__New,
   __TS__Number = __TS__Number,
   __TS__NumberIsFinite = __TS__NumberIsFinite,
