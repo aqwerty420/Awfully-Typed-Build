@@ -1,5 +1,4 @@
 local Unlocker, awful, myWork = ...
-
 local ____lualib = myWork["lualib_bundle"]
 local __TS__Class = ____lualib.__TS__Class
 local __TS__New = ____lualib.__TS__New

@@ -1,5 +1,4 @@
 local Unlocker, awful, myWork = ...
-
 local ____exports = {}
 local NewSpell = awful.NewSpell
 ____exports.Recklessness = NewSpell(1719, {targeted = false})
